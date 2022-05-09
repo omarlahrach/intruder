@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Intrus</string>
+
+    <string name="offline_message">Aucune connexion</string>
+    <string name="online_message">De nouveau connecté à Internet</string>
+
+    <string name="level_name">Niveau</string>
+</resources>
