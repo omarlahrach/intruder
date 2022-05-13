@@ -9,8 +9,9 @@ import android.net.NetworkInfo;
 
 import androidx.lifecycle.LiveData;
 
-public class ConnectionLiveData extends LiveData<Boolean> {
+import com.ailyan.intrus.utilities.enums.ConnectionState;
 
+public class ConnectionLiveData extends LiveData<ConnectionState> {
     private final Context context;
 
     public ConnectionLiveData(Context context) {
@@ -31,16 +32,17 @@ public class ConnectionLiveData extends LiveData<Boolean> {
     }
 
     private final BroadcastReceiver networkReceiver = new BroadcastReceiver() {
+
         @Override
         public void onReceive(Context context, Intent intent) {
-            if(intent.getExtras() != null) {
+            if (intent.getExtras() != null) {
                 ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
                 boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
                 if (isConnected)
-                    postValue(true);
+                    postValue(ConnectionState.ONLINE);
                 else
-                    postValue(false);
+                    postValue(ConnectionState.OFFLINE);
             }
         }
     };

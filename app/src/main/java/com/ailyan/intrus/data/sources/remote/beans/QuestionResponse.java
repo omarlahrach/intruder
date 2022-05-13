@@ -25,7 +25,7 @@ public class QuestionResponse {
         @Root(name = "Question", strict = false)
         public static class Question {
             @Element(name = "Id", required = false)
-            public long id;
+            public int id;
             @Element(name = "Enonce", required = false)
             public String statement;
             @Element(name = "Niveau", required = false)
@@ -42,27 +42,57 @@ public class QuestionResponse {
             @Root(name = "CategoryQuestion", strict = false)
             static class Category {
                 @Element(name = "Id", required = false)
-                public long id;
+                public int id;
                 @Element(name = "Nom", required = false)
                 public String name;
                 @Element(name = "Validation", required = false)
                 public int validation;
                 @Element(name = "ValidationEtablissement", required = false)
                 public int establishmentValidation;
+
+                @NonNull
+                @Override
+                public String toString() {
+                    return "Category{" +
+                            "id=" + id +
+                            ", name='" + name + '\'' +
+                            ", validation=" + validation +
+                            ", establishmentValidation=" + establishmentValidation +
+                            '}';
+                }
             }
 
             @NonNull
             @Override
             public String toString() {
-                return "Question {" +
+                return "Question{" +
                         "id=" + id +
                         ", statement='" + statement + '\'' +
                         ", level=" + level +
                         ", establishment=" + establishment +
                         ", validation=" + validation +
                         ", establishmentValidation=" + establishmentValidation +
+                        ", categorie=" + categorie +
                         '}';
             }
         }
+
+        @NonNull
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "questions=" + questions +
+                    '}';
+        }
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "QuestionResponse{" +
+                "succes=" + succes +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

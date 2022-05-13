@@ -14,16 +14,8 @@
         android:theme="@style/Theme.Intrus">
         <activity
             android:name=".ui.views.activities.GameActivity"
-            android:exported="false"
-            android:screenOrientation="landscape"/>
-        <activity
-            android:name=".ui.views.activities.MainActivity"
-            android:exported="false"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".ui.views.activities.LoginActivity"
-            android:exported="true"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

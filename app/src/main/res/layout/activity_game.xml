@@ -6,26 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".ui.views.activities.GameActivity">
 
-    <!-- Question Fragment -->
+    <!-- Login Fragment -->
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_question"
-        android:name="com.ailyan.intrus.ui.views.fragments.QuestionFragment"
+        android:id="@+id/fragment_login"
+        android:name="com.ailyan.intrus.ui.views.fragments.LoginFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/fragment_answer"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginVertical="@dimen/_5sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Answer Fragment -->
+    <!-- Fragment container -->
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_answer"
-        android:name="com.ailyan.intrus.ui.views.fragments.AnswerFragment"
+        android:id="@+id/fragment_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_question" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

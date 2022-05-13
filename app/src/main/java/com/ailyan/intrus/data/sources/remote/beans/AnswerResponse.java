@@ -27,7 +27,7 @@ public class AnswerResponse {
             @Element(name = "Id", required = false)
             public long id;
             @Element(name = "Image", required = false)
-            public String imageUri;
+            public String imageUrl;
             @Element(name = "Correcte", required = false)
             public boolean isCorrect;
             @Element(name = "Question", required = false)
@@ -38,11 +38,29 @@ public class AnswerResponse {
             public String toString() {
                 return "Answer{" +
                         "id=" + id +
-                        ", imageUri='" + imageUri + '\'' +
+                        ", imageUrl='" + imageUrl + '\'' +
                         ", isCorrect=" + isCorrect +
                         ", question=" + question +
                         '}';
             }
         }
+
+        @NonNull
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "answers=" + answers +
+                    '}';
+        }
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "AnswerResponse{" +
+                "succes=" + succes +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

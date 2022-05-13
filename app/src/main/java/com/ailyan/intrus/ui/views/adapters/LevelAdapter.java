@@ -7,20 +7,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.ailyan.intrus.R;
-import com.ailyan.intrus.data.sources.local.entities.LevelEntity;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
 
 public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> {
 
-    private final List<LevelEntity> levels;
+    private final Context context;
+    private final List<Integer> levels;
     private final LayoutInflater mInflater;
     private LevelAdapter.ItemClickListener mClickListener;
 
-    public LevelAdapter(Context context, List<LevelEntity> levels) {
+    public LevelAdapter(Context context, List<Integer> levels) {
+        this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.levels = levels;
     }
@@ -29,13 +32,16 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> 
     @Override
     public LevelAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_level, parent, false);
+        GridLayoutManager.LayoutParams lp = (GridLayoutManager.LayoutParams) view.getLayoutParams();
+        lp.height = parent.getMeasuredHeight() / 2 - parent.getMeasuredHeight() / 10;
+        view.setLayoutParams(lp);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull LevelAdapter.ViewHolder holder, int position) {
-        LevelEntity level = levels.get(position);
-        holder.textView_level.setText(R.string.level_name + level.id);
+        Integer level = levels.get(position);
+        holder.textView_level.setText(context.getResources().getString(R.string.level_title, level + 1));
     }
 
     @Override

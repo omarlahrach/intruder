@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.views.fragments.MainFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Progress Fragment -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_progress"
+            android:name="com.ailyan.intrus.ui.views.fragments.ProgressFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:background="@drawable/progress_background"
+            app:layout_constraintBottom_toTopOf="@id/layout_question_answers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="1.5" />
+
+        <LinearLayout
+            android:id="@+id/layout_question_answers"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/button_validate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_progress"
+            app:layout_constraintVertical_weight="7">
+
+            <!-- Question Fragment -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_question"
+                android:name="com.ailyan.intrus.ui.views.fragments.QuestionFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/_2sdp"
+                android:layout_weight="2" />
+
+            <!-- Answer Fragment -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_answer"
+                android:name="com.ailyan.intrus.ui.views.fragments.AnswerFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/_2sdp"
+                android:layout_weight="8" />
+
+        </LinearLayout>
+
+        <!-- Control -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_validate"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_200sdp"
+            android:backgroundTint="@color/green"
+            android:text="@string/validate_button_text"
+            android:textSize="@dimen/_18ssp"
+            app:icon="@drawable/ic_check"
+            app:iconSize="@dimen/_25sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_question_answers"
+            app:layout_constraintVertical_weight="1.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

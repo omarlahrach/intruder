@@ -7,16 +7,16 @@ import androidx.room.PrimaryKey;
 @Entity
 public class QuestionEntity {
     @PrimaryKey
-    public long id;
+    public int id;
     public String statement;
-    public int levelId;
+    public int level;
     public int validation;
     public int establishmentValidation;
 
-    public QuestionEntity(long id, String statement, int levelId, int validation, int establishmentValidation) {
+    public QuestionEntity(int id, String statement, int level, int validation, int establishmentValidation) {
         this.id = id;
         this.statement = statement;
-        this.levelId = levelId;
+        this.level = level;
         this.validation = validation;
         this.establishmentValidation = establishmentValidation;
     }
@@ -27,7 +27,7 @@ public class QuestionEntity {
         return "QuestionEntity{" +
                 "id=" + id +
                 ", statement='" + statement + '\'' +
-                ", levelId=" + levelId +
+                ", level=" + level +
                 ", validation=" + validation +
                 ", establishmentValidation=" + establishmentValidation +
                 '}';

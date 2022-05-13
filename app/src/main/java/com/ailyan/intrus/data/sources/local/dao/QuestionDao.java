@@ -9,12 +9,12 @@ import com.ailyan.intrus.data.sources.local.entities.QuestionEntity;
 
 import java.util.List;
 
-import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Observable;
 
 @Dao
 public interface QuestionDao {
-    @Query("SELECT * FROM questionentity WHERE levelId = :levelId")
-    Flowable<List<QuestionEntity>> loadQuestionsByLevel(int levelId);
+    @Query("SELECT * FROM questionentity WHERE level = :level")
+    Observable<List<QuestionEntity>> loadQuestionsByLevel(int level);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertAllQuestions(List<QuestionEntity> questionEntities);

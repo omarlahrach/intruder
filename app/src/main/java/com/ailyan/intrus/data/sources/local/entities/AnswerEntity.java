@@ -8,13 +8,13 @@ import androidx.room.PrimaryKey;
 public class AnswerEntity {
     @PrimaryKey
     public long id;
-    public String imageUri;
+    public String imageUrl;
     public boolean isCorrect;
     public long questionId;
 
-    public AnswerEntity(long id, String imageUri, boolean isCorrect, long questionId) {
+    public AnswerEntity(long id, String imageUrl, boolean isCorrect, long questionId) {
         this.id = id;
-        this.imageUri = imageUri;
+        this.imageUrl = imageUrl;
         this.isCorrect = isCorrect;
         this.questionId = questionId;
     }
@@ -24,7 +24,7 @@ public class AnswerEntity {
     public String toString() {
         return "AnswerEntity{" +
                 "id=" + id +
-                ", imageUri='" + imageUri + '\'' +
+                ", imageUrl=" + imageUrl +
                 ", isCorrect=" + isCorrect +
                 ", questionId=" + questionId +
                 '}';

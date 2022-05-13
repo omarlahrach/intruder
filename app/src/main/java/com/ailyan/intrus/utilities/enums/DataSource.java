@@ -1,4 +1,4 @@
-package com.ailyan.intrus.utilities;
+package com.ailyan.intrus.utilities.enums;
 
 public enum DataSource {
     LOCAL, REMOTE

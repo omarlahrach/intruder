@@ -9,12 +9,12 @@ import com.ailyan.intrus.data.sources.local.entities.AnswerEntity;
 
 import java.util.List;
 
-import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Observable;
 
 @Dao
 public interface AnswerDao {
     @Query("SELECT * FROM answerentity WHERE questionId = :questionId")
-    Flowable<List<AnswerEntity>> loadAnswersByQuestionId(long questionId);
+    Observable<List<AnswerEntity>> loadAnswersByQuestionId(long questionId);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertAllAnswers(List<AnswerEntity> answerEntities);

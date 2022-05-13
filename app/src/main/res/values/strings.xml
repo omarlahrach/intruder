@@ -1,8 +1,22 @@
 <resources>
     <string name="app_name">Intrus</string>
 
+    <string name="checking_connection">Vérification de la connexion…</string>
     <string name="offline_message">Aucune connexion</string>
     <string name="online_message">De nouveau connecté à Internet</string>
+    <string name="timeout_message">Connexion lente</string>
+    <string name="quit_message">Voulez-vous vraiment arrêter?</string>
 
-    <string name="level_name">Niveau</string>
+    <string name="level_title">Niveau %1$d</string>
+    <string name="points_progress_text">%1$d/%2$d points</string>
+    <string name="question_progress_text">Question %1$d sur %2$d</string>
+
+    <string name="answers_loading">"En cours de chargement des réponses"</string>
+    <string name="validate_button_text">Valider</string>
+    <string name="answer_image">Image de la réponse</string>
+    <string name="ok">OK</string>
+    <string name="emoji">emoji</string>
+
+    <string name="yes">Oui</string>
+    <string name="cancel">Annuler</string>
 </resources>

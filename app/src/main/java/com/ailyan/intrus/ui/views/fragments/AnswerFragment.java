@@ -1,30 +1,33 @@
 package com.ailyan.intrus.ui.views.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ailyan.intrus.R;
 import com.ailyan.intrus.data.sources.local.entities.AnswerEntity;
 import com.ailyan.intrus.ui.viewModels.AnswerViewModel;
-import com.ailyan.intrus.ui.viewModels.GameViewModel;
-import com.ailyan.intrus.utilities.ConnectionLiveData;
+import com.ailyan.intrus.ui.viewModels.QuestionViewModel;
+import com.ailyan.intrus.ui.views.adapters.AnswerAdapter;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
-public class AnswerFragment extends Fragment {
-    private static final String TAG = AnswerFragment.class.getSimpleName();
+import java.util.Collections;
+import java.util.List;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+public class AnswerFragment extends Fragment implements AnswerAdapter.ItemClickListener {
+    //private static final String TAG = AnswerFragment.class.getSimpleName();
+    private RecyclerView recyclerView_answers;
+    private CircularProgressIndicator circularProgressIndicator_loading;
+    private List<AnswerEntity> answers;
+    private AnswerViewModel answerViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,24 +38,35 @@ public class AnswerFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ConnectionLiveData connectionLiveData = new ConnectionLiveData(getContext());
-        GameViewModel gameViewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
-        AnswerViewModel answerViewModel = new ViewModelProvider(requireActivity()).get(AnswerViewModel.class);
+        recyclerView_answers = view.findViewById(R.id.recyclerView_answers);
+        circularProgressIndicator_loading = view.findViewById(R.id.circularProgressIndicator_loading);
 
-        connectionLiveData.observe(getViewLifecycleOwner(), isConnected ->
-                gameViewModel.currentQuestion().observe(getViewLifecycleOwner(), currentQuestion -> {
-                    if (isConnected)
-                        answerViewModel.loadRemoteAnswersByQuestion(currentQuestion).observe(getViewLifecycleOwner(), remoteAnswers -> {
-                            for (AnswerEntity answerEntity : remoteAnswers)
-                                Log.d(TAG, answerEntity.toString());
-                        });
+        answerViewModel = new ViewModelProvider(requireActivity()).get(AnswerViewModel.class);
+        QuestionViewModel questionViewModel = new ViewModelProvider(requireActivity()).get(QuestionViewModel.class);
+
+        questionViewModel.selectedQuestion().observe(getViewLifecycleOwner(), question ->
+                answerViewModel.loadLocalAnswersByQuestionId(question.id).observe(getViewLifecycleOwner(), answers -> {
+                    this.answers = answers;
+                    if (answers.isEmpty())
+                        circularProgressIndicator_loading.setVisibility(View.VISIBLE);
                     else
-                        answerViewModel.loadLocalAnswersByQuestion(currentQuestion).observe(getViewLifecycleOwner(), localAnswers -> {
-                            if (localAnswers != null)
-                                Log.d(TAG, localAnswers.isEmpty() + " ");
-                            else
-                                Toast.makeText(getContext(), R.string.offline_message, Toast.LENGTH_LONG).show();
-                        });
-                }));
+                        circularProgressIndicator_loading.setVisibility(View.INVISIBLE);
+                    Collections.shuffle(answers);
+                    showAnswers();
+                })
+        );
+    }
+
+    private void showAnswers() {
+        AnswerAdapter answerAdapter = new AnswerAdapter(getContext(), answers, answerViewModel);
+        answerAdapter.setClickListener(this);
+        recyclerView_answers.setAdapter(answerAdapter);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 4);
+        recyclerView_answers.setLayoutManager(gridLayoutManager);
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+
     }
 }

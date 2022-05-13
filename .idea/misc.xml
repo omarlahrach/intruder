@@ -3,11 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/bg_section.xml" value="0.2525" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/offline_bacckground.xml" value="0.2525" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/offline_toast_background.xml" value="0.154" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/onlineMessage_background.xml" value="0.2525" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/online_background.xml" value="0.2525" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/section_background.xml" value="0.2525" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/activity_game.xml" value="0.25" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/activity_level.xml" value="0.25" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/activity_main.xml" value="0.196875" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/dialog_result.xml" value="0.11510416666666666" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/fragment_blank.xml" value="0.1125" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/fragment_connection.xml" value="0.25" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/fragment_level.xml" value="0.196875" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/fragment_login.xml" value="0.196875" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/fragment_main.xml" value="0.14947916666666666" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/fragment_progress.xml" value="0.25" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/fragment_session.xml" value="0.25" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/item_answer.xml" value="0.25" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/toats_connection.xml" value="0.25" />
       </map>
     </option>
   </component>
