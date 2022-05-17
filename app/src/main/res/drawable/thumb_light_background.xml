@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:width="@dimen/_40sdp"
+        android:height="@dimen/_40sdp"
+        android:gravity="center">
+        <shape android:shape="oval">
+            <solid android:color="?attr/colorSecondaryVariant" />
+        </shape>
+    </item>
+    <item
+        android:width="@dimen/_30sdp"
+        android:height="@dimen/_30sdp"
+        android:gravity="center">
+        <bitmap
+            android:src="@drawable/ic_sun"
+            android:tint="?attr/colorOnPrimary" />
+    </item>
+</layer-list>

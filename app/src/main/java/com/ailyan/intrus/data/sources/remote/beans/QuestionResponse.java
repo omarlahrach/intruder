@@ -37,10 +37,10 @@ public class QuestionResponse {
             @Element(name = "ValidationEtablissement", required = false)
             public int establishmentValidation;
             @Element(name = "CategorieQuestion", required = false)
-            public Category categorie;
+            public Category category;
 
             @Root(name = "CategoryQuestion", strict = false)
-            static class Category {
+            public static class Category {
                 @Element(name = "Id", required = false)
                 public int id;
                 @Element(name = "Nom", required = false)
@@ -72,7 +72,7 @@ public class QuestionResponse {
                         ", establishment=" + establishment +
                         ", validation=" + validation +
                         ", establishmentValidation=" + establishmentValidation +
-                        ", categorie=" + categorie +
+                        ", category=" + category +
                         '}';
             }
         }

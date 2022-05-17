@@ -18,6 +18,7 @@ import com.ailyan.intrus.ui.viewModels.AnswerViewModel;
 import com.ailyan.intrus.ui.viewModels.ProgressViewModel;
 import com.ailyan.intrus.ui.viewModels.QuestionViewModel;
 import com.ailyan.intrus.ui.views.dialogs.ResultDialogFragment;
+import com.ailyan.intrus.utilities.enums.AnswerState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,6 @@ public class MainFragment extends Fragment {
     private int selectedLevel;
     private List<QuestionEntity> questions;
     private int currentQuestionIndex;
-    private int points = 0;
     private final List<AnswerEntity> selectedAnswers = new ArrayList<>();
 
     @Override
@@ -41,7 +41,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button button_validate = view.findViewById(R.id.button_validate);
+        Button button_next = view.findViewById(R.id.button_next);
 
         QuestionViewModel questionViewModel = new ViewModelProvider(requireActivity()).get(QuestionViewModel.class);
         AnswerViewModel answerViewModel = new ViewModelProvider(requireActivity()).get(AnswerViewModel.class);
@@ -54,33 +54,38 @@ public class MainFragment extends Fragment {
                 progressViewModel.getQuestionIndex().postValue(currentQuestionIndex);
                 progressViewModel.getQuestionsCount().postValue(questions.size());
                 questionViewModel.selectedQuestion().postValue(questions.get(currentQuestionIndex - 1));
+                progressViewModel.getPoints().postValue(0);
             }
         });
 
         answerViewModel.selectedAnswer().observe(getViewLifecycleOwner(), answer -> {
-            if (!selectedAnswers.contains(answer))
-                selectedAnswers.add(answer);
-            else
+            if (selectedAnswers.contains(answer))
                 selectedAnswers.remove(answer);
+            else
+                selectedAnswers.add(answer);
+
+            if (selectedAnswers.isEmpty())
+                button_next.setVisibility(View.INVISIBLE);
+            else
+                button_next.setVisibility(View.VISIBLE);
         });
 
-        button_validate.setOnClickListener(btn -> {
-            boolean congrats = true;
-            for (AnswerEntity answerEntity : selectedAnswers)
-                if (!answerEntity.isCorrect) {
-                    congrats = false;
+        button_next.setOnClickListener(btn -> {
+            AnswerState answerState = AnswerState.CORRECT;
+            for (AnswerEntity selectedAnswer : selectedAnswers)
+                if (!selectedAnswer.isCorrect) {
+                    answerState = AnswerState.INCORRECT;
                     break;
                 }
-            if (congrats)
-                points += 10;
-            progressViewModel.getPoints().setValue(points);
-            new ResultDialogFragment(congrats).show(getChildFragmentManager(), "Result");
+            new ResultDialogFragment(answerState).show(getChildFragmentManager(), "Result");
             boolean gameFinished = currentQuestionIndex == questions.size();
             if (!gameFinished) {
                 int nextQuestionIndex = ++currentQuestionIndex;
                 questionViewModel.selectedQuestion().postValue(questions.get(nextQuestionIndex - 1));
                 progressViewModel.getQuestionIndex().postValue(nextQuestionIndex);
             }
+            button_next.setVisibility(View.INVISIBLE);
+            selectedAnswers.clear();
         });
     }
 }

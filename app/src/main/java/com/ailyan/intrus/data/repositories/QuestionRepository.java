@@ -29,12 +29,13 @@ public class QuestionRepository {
         questionDao = AppDatabase.getInstance(application).questionDao();
     }
 
-    public Observable<List<QuestionEntity>> getAllRemoteQuestions() {
+    public Observable<List<QuestionEntity>> loadAllRemoteQuestions() {
         AuthResponse authResponse = (AuthResponse) SharedData.get(application, AuthResponse.class, "auth");
         return questionService.loadAllQuestions(authResponse.username, authResponse.session)
                 .flatMap(questionResponse -> Observable
                         .fromIterable(questionResponse.data.questions)
-                        .filter(question -> question.establishment == authResponse.establishment)
+                        .filter(question -> question.establishment == authResponse.establishment
+                                        && question.category.id == 21)
                         .map(question -> new QuestionEntity(
                                 question.id,
                                 question.statement,

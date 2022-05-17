@@ -13,13 +13,11 @@ import com.ailyan.intrus.data.sources.local.entities.QuestionEntity;
 
 import java.util.List;
 
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class QuestionViewModel extends AndroidViewModel {
     private static final String TAG = QuestionViewModel.class.getSimpleName();
-    private final MutableLiveData<List<QuestionEntity>> remoteQuestions = new MutableLiveData<>();
     private final MutableLiveData<List<QuestionEntity>> localQuestionsByLevel = new MutableLiveData<>();
     private final MutableLiveData<QuestionEntity> question = new MutableLiveData<>();
     private final QuestionRepository questionRepository;
@@ -30,23 +28,23 @@ public class QuestionViewModel extends AndroidViewModel {
         this.questionRepository = new QuestionRepository(application);
     }
 
-    public LiveData<List<QuestionEntity>> getAllRemoteQuestions() {
-        disposable = questionRepository.getAllRemoteQuestions()
+    public void loadAllRemoteQuestions(LoginViewModel loginViewModel) {
+        disposable = questionRepository.loadAllRemoteQuestions()
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        this.remoteQuestions::setValue,
-                        throwable -> Log.e(TAG, "Cannot access remote questions!", throwable)
+                        questions -> Log.d(TAG, "Remote questions loaded successfully"),
+                        throwable -> {
+                            Log.e(TAG, "Cannot access remote questions!", throwable);
+                            loginViewModel.checkSession(null, null);
+                        }
                 );
-        return remoteQuestions;
     }
 
     public LiveData<List<QuestionEntity>> loadLocalQuestionsByLevel(int level) {
         disposable = questionRepository.loadLocalQuestionsByLevel(level)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        this.localQuestionsByLevel::setValue,
+                        this.localQuestionsByLevel::postValue,
                         throwable -> Log.e(TAG, "Cannot load local questions by level!", throwable)
                 );
         return localQuestionsByLevel;

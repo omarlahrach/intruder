@@ -6,16 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import com.ailyan.intrus.R;
-import com.ailyan.intrus.ui.views.fragments.LevelFragment;
-import com.ailyan.intrus.ui.views.fragments.MainFragment;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.ailyan.intrus.R;
+import com.ailyan.intrus.ui.views.fragments.LevelFragment;
 
 import java.util.Objects;
 
@@ -45,17 +45,39 @@ public class QuitDialogFragment extends DialogFragment {
     private void handleClicks() {
         btn_cancel.setOnClickListener(view -> this.dismiss());
         btn_yes.setOnClickListener(view -> {
-            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, LevelFragment.class, null)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .commit();
+            if (this.getTag() != null) {
+                switch (this.getTag()) {
+                    case "Quit level":
+                        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container, LevelFragment.class, null, "Level")
+                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
+                                .commit();
+                        this.dismiss();
+                        break;
+                    case "Quit game":
+                        requireActivity().moveTaskToBack(true);
+                        requireActivity().finish();
+                        break;
+                }
+            }
         });
     }
 
     private void loadUIElements() {
+        TextView textView_title = root.findViewById(R.id.textView_title);
         btn_cancel = root.findViewById(R.id.btn_cancel);
         btn_yes = root.findViewById(R.id.btn_yes);
         btn_cancel.setTextSize(btn_yes.getTextSize());
+        if (this.getTag() != null) {
+            switch (this.getTag()) {
+                case "Quit level":
+                    textView_title.setText(R.string.quit_level);
+                    break;
+                case "Quit game":
+                    textView_title.setText(R.string.quit_game);
+                    break;
+            }
+        }
     }
 }

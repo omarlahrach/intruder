@@ -43,7 +43,7 @@ public class LoginFragment extends Fragment {
                         checkSession(sharedAuth);
                     break;
                 case OFFLINE:
-                    loginViewModel.selectedDataSource().setValue(DataSource.LOCAL);
+                    loginViewModel.selectedDataSource().postValue(DataSource.LOCAL);
                     break;
             }
         });
@@ -56,7 +56,7 @@ public class LoginFragment extends Fragment {
             switch (sessionState) {
                 case OPENED:
                     Log.d(TAG, "Session opened");
-                    loginViewModel.selectedDataSource().setValue(DataSource.REMOTE);
+                    loginViewModel.selectedDataSource().postValue(DataSource.REMOTE);
                     break;
                 case CLOSED:
                     Log.d(TAG, "Session closed!");
@@ -71,10 +71,10 @@ public class LoginFragment extends Fragment {
             if (authResponse.message == null) {
                 Log.d(TAG, "Login success");
                 SharedData.add(requireActivity().getApplication(), authResponse, "auth");
-                loginViewModel.selectedDataSource().setValue(DataSource.REMOTE);
+                loginViewModel.selectedDataSource().postValue(DataSource.REMOTE);
             } else {
                 Log.e(TAG, authResponse.message);
-                loginViewModel.selectedDataSource().setValue(DataSource.LOCAL);
+                loginViewModel.selectedDataSource().postValue(DataSource.LOCAL);
             }
         });
     }

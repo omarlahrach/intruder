@@ -14,12 +14,11 @@
             android:id="@+id/layout_points"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/_2sdp"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView_questionProgress"
-            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintEnd_toStartOf="@id/textView_questionProgress"
+            app:layout_constraintHorizontal_weight="3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -35,10 +34,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autoSizeMaxTextSize="100sp"
+                android:layout_marginStart="@dimen/_5sdp"
                 android:autoSizeMinTextSize="12sp"
                 android:autoSizeStepGranularity="2sp"
                 android:autoSizeTextType="uniform"
-                android:gravity="center"
+                android:gravity="start|center_vertical"
                 android:textColor="?attr/colorSecondary" />
 
         </LinearLayout>
@@ -55,31 +55,32 @@
             android:gravity="center"
             android:textColor="?attr/colorOnPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/layout_close"
-            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintEnd_toStartOf="@id/layout_home"
+            app:layout_constraintHorizontal_weight="4"
             app:layout_constraintStart_toEndOf="@id/layout_points"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/layout_close"
+            android:id="@+id/layout_home"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/_2sdp"
             android:gravity="end|center_vertical"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/textView_questionProgress"
+            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintStart_toEndOf="@id/textView_questionProgress"
             app:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                android:id="@+id/button_quit"
-                android:layout_width="@dimen/_45sdp"
-                android:layout_height="@dimen/_45sdp"
-                android:backgroundTint="?attr/colorSecondaryVariant"
-                app:icon="@drawable/ic_close"
-                app:iconTint="?attr/colorOnPrimary" />
+            <ImageButton
+                android:id="@+id/button_home"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/home_button_background"
+                android:contentDescription="@string/home_button"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_home"
+                app:tint="?attr/colorOnPrimary" />
 
         </LinearLayout>
 

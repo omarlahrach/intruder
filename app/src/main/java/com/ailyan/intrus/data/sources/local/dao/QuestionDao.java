@@ -16,6 +16,9 @@ public interface QuestionDao {
     @Query("SELECT * FROM questionentity WHERE level = :level")
     Observable<List<QuestionEntity>> loadQuestionsByLevel(int level);
 
+    @Query("SELECT DISTINCT level FROM questionentity")
+    Observable<List<Integer>> loadAllLevels();
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertAllQuestions(List<QuestionEntity> questionEntities);
 }

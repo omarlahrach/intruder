@@ -15,6 +15,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.ailyan.intrus.R;
 import com.ailyan.intrus.utilities.Helper;
+import com.ailyan.intrus.utilities.enums.AnswerState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +28,10 @@ public class ResultDialogFragment extends DialogFragment {
     private TextView textView_answer;
     private Button btn_ok;
 
-    private final boolean congrats;
+    private final AnswerState answerState;
 
-    public ResultDialogFragment(boolean congrats) {
-        this.congrats = congrats;
+    public ResultDialogFragment(AnswerState answerState) {
+        this.answerState = answerState;
     }
 
     @Override
@@ -62,28 +63,37 @@ public class ResultDialogFragment extends DialogFragment {
         List<Integer> lose_emojis = new ArrayList<>();
 
         win_emojis.add(R.drawable.ic_star);
-        win_emojis.add(R.drawable.ic_smiling);
         win_emojis.add(R.drawable.ic_cool);
         win_emojis.add(R.drawable.ic_happy);
-        win_emojis.add(R.drawable.ic_party);
 
-        lose_emojis.add(R.drawable.ic_shocked);
-        lose_emojis.add(R.drawable.ic_angry);
-        lose_emojis.add(R.drawable.ic_sad);
-        lose_emojis.add(R.drawable.ic_thinking);
-        lose_emojis.add(R.drawable.ic_laughing);
+        lose_emojis.add(R.drawable.ic_smiling);
 
         int win_emoji = win_emojis.get(Helper.getRandomNumber(win_emojis.size()));
         int lose_emoji = lose_emojis.get(Helper.getRandomNumber(lose_emojis.size()));
 
-        int emoji = congrats ? win_emoji : lose_emoji;
-
-        String title = congrats ? "Correcte" : "Incorrect";
-        String message = congrats ? "Félicitation" : "Prochaine fois";
+        int emoji = 0;
+        String title = "";
+        String message = "";
+        String btn_text = "";
+        switch (answerState) {
+            case CORRECT:
+                emoji = win_emoji;
+                title = getString(R.string.correct_answer_title);
+                message = getString(R.string.correct_answer_message);
+                btn_text = getString(R.string.correct_answer_btn_text);
+                break;
+            case INCORRECT:
+                emoji = lose_emoji;
+                title = getString(R.string.incorrect_answer_title);
+                message = getString(R.string.incorrect_answer_message);
+                btn_text = getString(R.string.incorrect_answer_btn_text);
+                break;
+        }
 
         textView_title.setText(title);
         imageView_emoji.setImageResource(emoji);
         textView_answer.setText(message);
+        btn_ok.setText(btn_text);
     }
 
     private void loadUIElements() {

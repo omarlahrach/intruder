@@ -33,7 +33,8 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> 
     public LevelAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_level, parent, false);
         GridLayoutManager.LayoutParams lp = (GridLayoutManager.LayoutParams) view.getLayoutParams();
-        lp.height = parent.getMeasuredHeight() / 2 - parent.getMeasuredHeight() / 10;
+        ViewGroup.MarginLayoutParams lpv = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+        lp.height = parent.getMeasuredHeight() / 2 - lpv.topMargin * 2;
         view.setLayoutParams(lp);
         return new ViewHolder(view);
     }
@@ -42,6 +43,20 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull LevelAdapter.ViewHolder holder, int position) {
         Integer level = levels.get(position);
         holder.textView_level.setText(context.getResources().getString(R.string.level_title, level + 1));
+        switch (level) {
+            case 0:
+                holder.cardView_level.setCardBackgroundColor(context.getColor(R.color.blue));
+                break;
+            case 1:
+                holder.cardView_level.setCardBackgroundColor(context.getColor(R.color.pink));
+                break;
+            case 2:
+                holder.cardView_level.setCardBackgroundColor(context.getColor(R.color.green));
+                break;
+            case 3:
+                holder.cardView_level.setCardBackgroundColor(context.getColor(R.color.amber));
+                break;
+        }
     }
 
     @Override

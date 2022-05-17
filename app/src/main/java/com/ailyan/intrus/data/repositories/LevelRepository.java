@@ -1,16 +1,25 @@
 package com.ailyan.intrus.data.repositories;
 
+import android.app.Application;
+
+import com.ailyan.intrus.data.sources.local.AppDatabase;
+import com.ailyan.intrus.data.sources.local.dao.QuestionDao;
+import com.ailyan.intrus.data.sources.remote.RetrofitInstance;
+import com.ailyan.intrus.data.sources.remote.services.QuestionService;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class LevelRepository {
+import io.reactivex.rxjava3.core.Observable;
 
-    public List<Integer> loadAllLevels() {
-        List<Integer> levels = new ArrayList<>();
-        levels.add(0);
-        levels.add(1);
-        levels.add(2);
-        levels.add(3);
-        return levels;
+public class LevelRepository {
+    private final QuestionDao questionDao;
+
+    public LevelRepository(Application application) {
+        questionDao = AppDatabase.getInstance(application).questionDao();
+    }
+
+    public Observable<List<Integer>> loadAllLevels() {
+        return questionDao.loadAllLevels();
     }
 }

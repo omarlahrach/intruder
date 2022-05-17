@@ -4,19 +4,22 @@
     <color name="light_colorPrimary">#9C27B0</color>
     <color name="light_colorOnPrimary">#FFFFFFFF</color>
     <color name="light_colorPrimaryVariant">#7B1FA2</color>
-    <color name="light_colorSecondaryVariant">#F57C00</color>
+    <color name="light_colorSecondary">#FFB74D</color>
+    <color name="light_colorOnSecondary">#FF000000</color>
+    <color name="light_colorSecondaryVariant">#EF6C00</color>
     <color name="light_colorBackground">#EDE7F6</color>
     <!--dark colors -->
-    <color name="dark_colorPrimary">#FFBB86FC</color>
-    <color name="dark_colorOnPrimary">#FF000000</color>
-    <color name="dark_colorPrimaryVariant">#7E57C2</color>
-    <color name="dark_colorSecondaryVariant">#FF03DAC5</color>
+    <color name="dark_colorPrimary">#7B1FA2</color>
+    <color name="dark_colorOnPrimary">#FFFFFF</color>
+    <color name="dark_colorPrimaryVariant">#AB47BC</color>
+    <color name="dark_colorSecondary">#FFB74D</color>
+    <color name="dark_colorOnSecondary">#FFFFFF</color>
+    <color name="dark_colorSecondaryVariant">#EF6C00</color>
+    <color name="dark_colorBackground">#47244D</color>
     <!-- common colors -->
-    <color name="colorSecondary">#FFCC80</color>
-    <color name="colorOnSecondary">#FF000000</color>
-    <!-- other colors -->
+    <color name="yellow">#33FF6F00</color>
     <color name="amber">#FF9800</color>
-    <color name="magenta">#9C27B0</color>
+    <color name="magenta">#339C27B0</color>
     <color name="pink">#E91E63</color>
     <color name="green">#009688</color>
     <color name="blue">#3F51B5</color>

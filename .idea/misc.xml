@@ -4,11 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/bg_section.xml" value="0.2525" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/header_background.xml" value="0.2555" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/home_button_background.xml" value="0.152" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/ic_sun.xml" value="0.1215" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/offline_bacckground.xml" value="0.2525" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/offline_toast_background.xml" value="0.154" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/onlineMessage_background.xml" value="0.2525" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/online_background.xml" value="0.2525" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/section_background.xml" value="0.2525" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/theme_dark_background.xml" value="0.1215" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/theme_light_background.xml" value="0.1" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/theme_switch_state.xml" value="0.159" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/thumb_light_background.xml" value="0.135" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/thumb_switch_state.xml" value="0.1495" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/track_dark_background.xml" value="0.1495" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/track_light_background.xml" value="0.1495" />
+        <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/drawable/track_switch_state.xml" value="0.1495" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/activity_game.xml" value="0.25" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/activity_level.xml" value="0.25" />
         <entry key="..\:/Internships/Game developer - Ailyan/Projet/Developpement/Jeux/Intrus/app/src/main/res/layout/activity_main.xml" value="0.196875" />

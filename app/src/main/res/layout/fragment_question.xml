@@ -8,23 +8,83 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/_20sdp">
 
         <TextView
             android:id="@+id/textView_questionStatement"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:alpha="0"
             android:autoSizeMaxTextSize="100sp"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
-            android:alpha="0"
-            android:gravity="center"
-            android:textColor="?attr/colorPrimary"
+            android:gravity="start"
+            android:textColor="?attr/colorOnSecondary"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/layout_attempts"
+            app:layout_constraintHorizontal_weight="5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layout_attempts"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="5"
+            app:layout_constraintStart_toEndOf="@id/textView_questionStatement"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView_attempts"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="7"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center_vertical|end"
+                android:text="@string/three_more_attempts"
+                android:textColor="?attr/colorOnSecondary" />
+
+            <ImageView
+                android:id="@+id/imageView_heart1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:contentDescription="@string/heart_icon"
+                android:src="@drawable/ic_heart"
+                app:tint="@color/red" />
+
+            <ImageView
+                android:id="@+id/imageView_heart2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:contentDescription="@string/heart_icon"
+                android:src="@drawable/ic_heart"
+                app:tint="@color/red" />
+
+            <ImageView
+                android:id="@+id/imageView_heart3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:contentDescription="@string/heart_icon"
+                android:src="@drawable/ic_heart"
+                app:tint="@color/red" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

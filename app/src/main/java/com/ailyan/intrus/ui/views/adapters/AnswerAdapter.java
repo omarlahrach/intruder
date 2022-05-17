@@ -51,9 +51,8 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
     public void onBindViewHolder(@NonNull AnswerAdapter.ViewHolder holder, int position) {
         AnswerEntity answer = answers.get(position);
         //Bitmap bitmap = BitmapFactory.decodeByteArray(answer.image, 0, answer.image.length);
-        if (answer.imageUrl != null) {
+        if (answer.imageUrl != null)
             Picasso.get().load(answer.imageUrl).into(holder.imageView_answer);
-        }
     }
 
     @Override
@@ -71,26 +70,25 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
             imageView_answer = itemView.findViewById(R.id.imageView_answer);
             itemView.setOnClickListener(this);
             cardView_answer.setOnClickListener(view -> {
-                answerViewModel.selectedAnswer().setValue(answers.get(getAdapterPosition()));
-                if (cardView_answer.isChecked()) {
-                    cardView_answer.setChecked(false);
-                    cardView_answer.setStrokeColor(context.getColorStateList(R.color.light_colorOnPrimary));
-                }
-                else {
+                answerViewModel.selectedAnswer().postValue(answers.get(getAdapterPosition()));
+                if (!cardView_answer.isChecked()) {
                     cardView_answer.setChecked(true);
                     Drawable icon;
                     ColorStateList color;
                     if (answers.get(getAdapterPosition()).isCorrect) {
                         color = context.getColorStateList(R.color.green);
                         icon = AppCompatResources.getDrawable(context, R.drawable.ic_check);
-                    }
-                    else {
+                    } else {
                         color = context.getColorStateList(R.color.red);
                         icon = AppCompatResources.getDrawable(context, R.drawable.ic_close);
                     }
                     cardView_answer.setCheckedIcon(icon);
                     cardView_answer.setStrokeColor(color);
                     cardView_answer.setCheckedIconTint(color);
+                }
+                else {
+                    cardView_answer.setChecked(false);
+                    cardView_answer.setStrokeColor(context.getColorStateList(R.color.light_colorOnPrimary));
                 }
             });
         }

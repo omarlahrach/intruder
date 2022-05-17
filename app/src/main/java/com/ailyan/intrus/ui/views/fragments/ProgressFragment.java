@@ -1,10 +1,12 @@
 package com.ailyan.intrus.ui.views.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,7 +23,7 @@ public class ProgressFragment extends Fragment {
     private CircularProgressIndicator circularProgressIndicator_pointsProgress;
     private TextView textView_pointsProgress;
     private TextView textView_questionProgress;
-    private int points;
+    private int points = 0;
     private int questionIndex;
     private int questionsCount;
 
@@ -37,9 +39,12 @@ public class ProgressFragment extends Fragment {
         circularProgressIndicator_pointsProgress = view.findViewById(R.id.circularProgressIndicator_pointsProgress);
         textView_pointsProgress = view.findViewById(R.id.textView_pointsProgress);
         textView_questionProgress = view.findViewById(R.id.textView_questionProgress);
-        Button button_quit = view.findViewById(R.id.button_quit);
+
+        LinearLayout layout_points = view.findViewById(R.id.layout_points);
+        circularProgressIndicator_pointsProgress.getLayoutParams().height = layout_points.getHeight();
 
         ProgressViewModel progressViewModel = new ViewModelProvider(requireActivity()).get(ProgressViewModel.class);
+
         progressViewModel.getPoints().observe(getViewLifecycleOwner(), points -> {
             this.points = points;
             circularProgressIndicator_pointsProgress.setProgress(points, true);
@@ -56,6 +61,7 @@ public class ProgressFragment extends Fragment {
             textView_pointsProgress.setText(getResources().getString(R.string.points_progress_text, points, questionsCount * 10));
         });
 
-        button_quit.setOnClickListener(btn -> new QuitDialogFragment().show(getChildFragmentManager(), "Quit"));
+        ImageButton button_home = view.findViewById(R.id.button_home);
+        button_home.setOnClickListener(btn -> new QuitDialogFragment().show(getChildFragmentManager(), "Quit level"));
     }
 }

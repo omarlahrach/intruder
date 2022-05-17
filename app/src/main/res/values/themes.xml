@@ -7,9 +7,9 @@
         <item name="colorOnPrimary">@color/light_colorOnPrimary</item>
         <item name="android:colorBackground">@color/light_colorBackground</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondary">@color/light_colorSecondary</item>
         <item name="colorSecondaryVariant">@color/light_colorSecondaryVariant</item>
-        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorOnSecondary">@color/light_colorOnSecondary</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/light_colorBackground</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>

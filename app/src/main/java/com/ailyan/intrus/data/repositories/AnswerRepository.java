@@ -29,7 +29,7 @@ public class AnswerRepository {
         answerDao = AppDatabase.getInstance(application).answerDao();
     }
 
-    public Observable<List<AnswerEntity>> getAllRemoteAnswersByQuestionId(int questionId) {
+    public Observable<List<AnswerEntity>> loadRemoteAnswersByQuestionId(int questionId) {
         AuthResponse authResponse = (AuthResponse) SharedData.get(application, AuthResponse.class, "auth");
         return answerService.loadAllAnswers(authResponse.username, authResponse.session)
                 .flatMap(answerResponse -> Observable
