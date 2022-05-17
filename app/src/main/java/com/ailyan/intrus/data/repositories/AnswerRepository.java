@@ -31,10 +31,9 @@ public class AnswerRepository {
 
     public Observable<List<AnswerEntity>> loadRemoteAnswersByQuestionId(int questionId) {
         AuthResponse authResponse = (AuthResponse) SharedData.get(application, AuthResponse.class, "auth");
-        return answerService.loadAllAnswers(authResponse.username, authResponse.session)
+        return answerService.loadAllAnswers(authResponse.username, authResponse.session, questionId)
                 .flatMap(answerResponse -> Observable
                         .fromIterable(answerResponse.data.answers)
-                        .filter(answer -> answer.question.id == questionId)
                         .map(answer -> new AnswerEntity(
                                 answer.id,
                                 answer.imageUrl,

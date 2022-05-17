@@ -34,8 +34,7 @@ public class QuestionRepository {
         return questionService.loadAllQuestions(authResponse.username, authResponse.session)
                 .flatMap(questionResponse -> Observable
                         .fromIterable(questionResponse.data.questions)
-                        .filter(question -> question.establishment == authResponse.establishment
-                                        && question.category.id == 21)
+                        .filter(question -> question.establishment == authResponse.establishment)
                         .map(question -> new QuestionEntity(
                                 question.id,
                                 question.statement,

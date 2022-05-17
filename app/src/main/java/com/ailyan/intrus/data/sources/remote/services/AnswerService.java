@@ -11,7 +11,10 @@ import retrofit2.http.POST;
 
 public interface AnswerService {
     @FormUrlEncoded
-    @POST("reponsesQuestions.php")
+    @POST("reponsesQuestionsIntrus.php")
     @Xml
-    Observable<AnswerResponse> loadAllAnswers(@Field("login") String username, @Field("session") String session);
+    Observable<AnswerResponse> loadAllAnswers(
+            @Field("login") String username,
+            @Field("session") String session,
+            @Field("id") int questionId);
 }
