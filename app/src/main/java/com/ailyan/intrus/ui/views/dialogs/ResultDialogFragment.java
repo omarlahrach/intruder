@@ -1,5 +1,6 @@
 package com.ailyan.intrus.ui.views.dialogs;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -50,7 +51,11 @@ public class ResultDialogFragment extends DialogFragment {
         requireActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
-        Objects.requireNonNull(getDialog()).getWindow().setLayout((int) (width - width * 0.2), (int) (height - height * 0.2));
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE)
+            Objects.requireNonNull(getDialog()).getWindow().setLayout((int) (width - width * 0.1), (int) (height - height * 0.2));
+        else
+            Objects.requireNonNull(getDialog()).getWindow().setLayout((int) (width - width * 0.1), (int) (height - height * 0.6));
     }
 
     private void handleClicks() {
@@ -62,7 +67,7 @@ public class ResultDialogFragment extends DialogFragment {
         List<Integer> win_emojis = new ArrayList<>();
         List<Integer> lose_emojis = new ArrayList<>();
 
-        win_emojis.add(R.drawable.ic_star);
+        win_emojis.add(R.drawable.ic_star_emoji);
         win_emojis.add(R.drawable.ic_cool);
         win_emojis.add(R.drawable.ic_happy);
 

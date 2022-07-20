@@ -2,8 +2,52 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ddd1412cb179e01361f3a0feae1c7689",
+    "identityHash": "2efbf71533f64fc0f4d7e63aa3ffedbf",
     "entities": [
+      {
+        "tableName": "LevelEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT, `maximumResult` INTEGER, `resultObtained` INTEGER, `rate` INTEGER, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "score.maximumResult",
+            "columnName": "maximumResult",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "score.resultObtained",
+            "columnName": "resultObtained",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "score.rate",
+            "columnName": "rate",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
       {
         "tableName": "QuestionEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `statement` TEXT, `level` INTEGER NOT NULL, `validation` INTEGER NOT NULL, `establishmentValidation` INTEGER NOT NULL, PRIMARY KEY(`id`))",
@@ -90,7 +134,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ddd1412cb179e01361f3a0feae1c7689')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2efbf71533f64fc0f4d7e63aa3ffedbf')"
     ]
   }
 }

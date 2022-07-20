@@ -7,15 +7,18 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.ailyan.intrus.data.sources.local.dao.AnswerDao;
+import com.ailyan.intrus.data.sources.local.dao.LevelDao;
 import com.ailyan.intrus.data.sources.local.dao.QuestionDao;
 import com.ailyan.intrus.data.sources.local.entities.AnswerEntity;
+import com.ailyan.intrus.data.sources.local.entities.LevelEntity;
 import com.ailyan.intrus.data.sources.local.entities.QuestionEntity;
 
-@Database(entities = {QuestionEntity.class, AnswerEntity.class}, version = 1)
+@Database(entities = {LevelEntity.class, QuestionEntity.class, AnswerEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase INSTANCE;
 
+    public abstract LevelDao levelDao();
     public abstract QuestionDao questionDao();
     public abstract AnswerDao answerDao();
 

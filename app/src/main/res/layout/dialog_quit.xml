@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorSurfaceVariant"
     android:paddingHorizontal="@dimen/_20sdp"
     android:paddingVertical="@dimen/_10sdp">
 
@@ -14,7 +15,7 @@
         android:autoSizeMinTextSize="12sp"
         android:autoSizeStepGranularity="2sp"
         android:autoSizeTextType="uniform"
-        android:padding="@dimen/_25sdp"
+        android:padding="@dimen/_15sdp"
         android:textColor="?attr/colorOnSecondary"
         app:layout_constraintBottom_toTopOf="@+id/layout_buttons"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +27,6 @@
         android:id="@+id/layout_buttons"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingHorizontal="@dimen/_50sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,15 +37,15 @@
             android:id="@+id/btn_cancel"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
             android:autoSizeMaxTextSize="100sp"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
-            android:layout_marginHorizontal="@dimen/_10sdp"
             android:backgroundTint="?attr/colorSecondaryVariant"
             android:text="@string/cancel"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_yes"
+            app:layout_constraintEnd_toStartOf="@id/btn_yes"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,6 +53,7 @@
             android:id="@+id/btn_yes"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
             android:autoSizeMaxTextSize="100sp"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeStepGranularity="2sp"
@@ -61,7 +62,7 @@
             android:text="@string/yes"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_cancel"
+            app:layout_constraintStart_toEndOf="@id/btn_cancel"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

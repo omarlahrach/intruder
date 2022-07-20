@@ -1,5 +1,6 @@
 package com.ailyan.intrus.ui.views.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,16 +11,24 @@ import com.ailyan.intrus.ui.viewModels.LoginViewModel;
 import com.ailyan.intrus.ui.viewModels.QuestionViewModel;
 import com.ailyan.intrus.ui.views.dialogs.QuitDialogFragment;
 import com.ailyan.intrus.ui.views.fragments.LevelFragment;
-import com.ailyan.intrus.utilities.ConnectionLiveData;
-import com.ailyan.intrus.utilities.Toast;
+import com.ailyan.intrus.utilities.SharedData;
 import com.ailyan.intrus.utilities.enums.DataSource;
 
 public class GameActivity extends AppCompatActivity {
-    //private static final String TAG = GameActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+
+        String[] data = sharedText.split("&");
+        String username = data[0];
+        String password = data[1];
+
+        SharedData.add(getApplication(), username, "username");
+        SharedData.add(getApplication(), password, "password");
+
         setContentView(R.layout.activity_game);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -29,17 +38,13 @@ public class GameActivity extends AppCompatActivity {
                     .commit();
         }
 
-        ConnectionLiveData connectionLiveData = new ConnectionLiveData(getApplicationContext());
-        connectionLiveData.observe(this, connectionState ->
-                Toast.showConnectionState(this, connectionState));
 
         QuestionViewModel questionViewModel = new ViewModelProvider(this).get(QuestionViewModel.class);
         LoginViewModel loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
         loginViewModel.selectedDataSource().observe(this, dataSource -> {
-            if (dataSource == DataSource.REMOTE) {
+            if (dataSource == DataSource.REMOTE)
                 questionViewModel.loadAllRemoteQuestions(loginViewModel);
-            }
         });
     }
 
@@ -49,6 +54,6 @@ public class GameActivity extends AppCompatActivity {
         if (levelFragment != null && levelFragment.isVisible())
             new QuitDialogFragment().show(getSupportFragmentManager(), "Quit game");
         else
-            new QuitDialogFragment().show(getSupportFragmentManager(), "Quit level");
+            new QuitDialogFragment().show(getSupportFragmentManager(), "Quit main");
     }
 }

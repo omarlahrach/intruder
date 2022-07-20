@@ -11,16 +11,34 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.ailyan.intrus.R;
 import com.ailyan.intrus.data.sources.remote.beans.AuthResponse;
 import com.ailyan.intrus.ui.viewModels.LoginViewModel;
+import com.ailyan.intrus.ui.views.activities.GameActivity;
 import com.ailyan.intrus.utilities.ConnectionLiveData;
 import com.ailyan.intrus.utilities.SharedData;
+import com.ailyan.intrus.utilities.Toast;
+import com.ailyan.intrus.utilities.enums.ConnectionState;
 import com.ailyan.intrus.utilities.enums.DataSource;
+
+import com.ailyan.intrus.R;
 
 public class LoginFragment extends Fragment {
     private static final String TAG = LoginFragment.class.getSimpleName();
     private LoginViewModel loginViewModel;
+    private ConnectionState connectionState;
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("connectionState", connectionState);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null)
+            this.connectionState = (ConnectionState) savedInstanceState.getSerializable("connectionState");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,17 +52,21 @@ public class LoginFragment extends Fragment {
 
         ConnectionLiveData connectionLiveData = new ConnectionLiveData(getContext());
         connectionLiveData.observe(getViewLifecycleOwner(), connectionState -> {
-            switch (connectionState) {
-                case ONLINE:
-                    AuthResponse sharedAuth = (AuthResponse) SharedData.get(requireActivity().getApplication(), AuthResponse.class, "auth");
-                    if (sharedAuth == null)
-                        login();
-                    else
-                        checkSession(sharedAuth);
-                    break;
-                case OFFLINE:
-                    loginViewModel.selectedDataSource().postValue(DataSource.LOCAL);
-                    break;
+            if (this.connectionState != connectionState) {
+                Toast.showConnectionState((GameActivity) requireActivity(), connectionState);
+                this.connectionState = connectionState;
+                switch (connectionState) {
+                    case ONLINE:
+                        AuthResponse sharedAuth = (AuthResponse) SharedData.get(requireActivity().getApplication(), AuthResponse.class, "auth");
+                        if (sharedAuth == null)
+                            login();
+                        else
+                            checkSession(sharedAuth);
+                        break;
+                    case OFFLINE:
+                        loginViewModel.selectedDataSource().postValue(DataSource.LOCAL);
+                        break;
+                }
             }
         });
     }
@@ -67,7 +89,9 @@ public class LoginFragment extends Fragment {
     }
 
     private void login() {
-        loginViewModel.login("testAdmin1", "123").observe(getViewLifecycleOwner(), authResponse -> {
+        String username = (String) SharedData.get(requireActivity().getApplication(), String.class, "username");
+        String password = (String) SharedData.get(requireActivity().getApplication(), String.class, "password");
+        loginViewModel.login(username, password).observe(getViewLifecycleOwner(), authResponse -> {
             if (authResponse.message == null) {
                 Log.d(TAG, "Login success");
                 SharedData.add(requireActivity().getApplication(), authResponse, "auth");

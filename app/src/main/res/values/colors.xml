@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- light colors -->
-    <color name="light_colorPrimary">#9C27B0</color>
+    <color name="light_colorPrimary">#FF5252</color>
     <color name="light_colorOnPrimary">#FFFFFFFF</color>
-    <color name="light_colorPrimaryVariant">#7B1FA2</color>
-    <color name="light_colorSecondary">#FFB74D</color>
-    <color name="light_colorOnSecondary">#FF000000</color>
-    <color name="light_colorSecondaryVariant">#EF6C00</color>
-    <color name="light_colorBackground">#EDE7F6</color>
+    <color name="light_colorPrimaryVariant">#EF9A9A</color>
+    <color name="light_colorSecondary">#FFAB91</color>
+    <color name="light_colorOnSecondary">#B3000000</color>
+    <color name="light_colorSecondaryVariant">#FF7043</color>
+    <color name="light_colorBackground">#FFFFFF</color>
+    <color name="light_colorSurface">#FFEBEE</color>
     <!--dark colors -->
-    <color name="dark_colorPrimary">#7B1FA2</color>
+    <color name="dark_colorPrimary">#FF5252</color>
     <color name="dark_colorOnPrimary">#FFFFFF</color>
-    <color name="dark_colorPrimaryVariant">#AB47BC</color>
-    <color name="dark_colorSecondary">#FFB74D</color>
+    <color name="dark_colorPrimaryVariant">#EF9A9A</color>
+    <color name="dark_colorSecondary">#FFAB91</color>
     <color name="dark_colorOnSecondary">#FFFFFF</color>
-    <color name="dark_colorSecondaryVariant">#EF6C00</color>
-    <color name="dark_colorBackground">#47244D</color>
+    <color name="dark_colorSecondaryVariant">#FF7043</color>
+    <color name="dark_colorBackground">#271F39</color>
+    <color name="dark_colorSurface">#CC1F162E</color>
     <!-- common colors -->
     <color name="yellow">#33FF6F00</color>
     <color name="amber">#FF9800</color>
@@ -24,6 +26,13 @@
     <color name="green">#009688</color>
     <color name="blue">#3F51B5</color>
     <color name="red">#D32F2F</color>
+    <color name="purple">#8E24AA</color>
+
+    <!-- dark colors -->
+    <color name="dark_magenta">#880E4F</color>
+    <color name="dark_green">#004D40</color>
+    <color name="dark_amber">#FF5300</color>
+    <color name="dark_purple">#5F0868</color>
 </resources>
 
 

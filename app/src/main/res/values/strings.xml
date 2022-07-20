@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">Intrus</string>
 
+    <string name="level1_title">Débutant</string>
+    <string name="level2_title">Compétent</string>
+    <string name="level3_title">Avancé</string>
+    <string name="level4_title">Expert</string>
+
     <string name="checking_connection">Vérification de la connexion…</string>
     <string name="offline_message">Aucune connexion</string>
-    <string name="online_message">De nouveau connecté à Internet</string>
+    <string name="online_message">Connexion établie</string>
     <string name="timeout_message">Connexion lente</string>
     <string name="quit_level">Voulez-vous vraiment terminer à ce niveau là?</string>
     <string name="quit_game">Est-ce vous voulez quitter le jeu?</string>
@@ -16,12 +21,13 @@
     <string name="incorrect_answer_btn_text">OK</string>
 
     <string name="level_title">Niveau %1$d</string>
-    <string name="points_progress_text">%1$d/%2$d points</string>
+    <string name="points_progress_text_landscape">%1$d</string>
+    <string name="points_progress_text_portrait">%1$d/%2$d points</string>
     <string name="question_progress_text">Question %1$d sur %2$d</string>
     <string name="levels_title">Sélectionnez un niveau</string>
 
-    <string name="answers_loading">"En cours de chargement des réponses"</string>
-    <string name="button_next">Question suivante</string>
+    <string name="answers_loading">"Chargement"</string>
+    <string name="button_next">Suivante</string>
     <string name="answer_image">Image de la réponse</string>
     <string name="emoji">emoji</string>
 

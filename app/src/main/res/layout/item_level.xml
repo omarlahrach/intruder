@@ -4,23 +4,54 @@
     android:id="@+id/cardView_level"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/_10sdp">
+    android:layout_marginHorizontal="@dimen/_20sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="@dimen/_20sdp">
 
         <TextView
             android:id="@+id/textView_level"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:gravity="center"
+            android:textSize="@dimen/_28ssp"
+            android:gravity="start|center_vertical"
             android:textColor="?attr/colorOnPrimary"
-            android:textSize="@dimen/_34ssp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/indicator_progress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/indicator_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:progress="100"
+            app:indicatorSize="@dimen/_30sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textView_points"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_level" />
+
+        <TextView
+            android:id="@+id/textView_points"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMaxTextSize="@dimen/_100ssp"
+            android:autoSizeMinTextSize="@dimen/_12ssp"
+            android:autoSizeStepGranularity="@dimen/_2ssp"
+            android:autoSizeTextType="uniform"
+            android:gravity="start|center_vertical"
+            android:textColor="?attr/colorOnPrimary"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_level"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/indicator_progress" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

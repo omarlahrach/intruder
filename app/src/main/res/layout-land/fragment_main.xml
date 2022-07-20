@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_10sdp"
+    tools:context=".ui.views.fragments.MainFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_5sdp">
+
+        <!-- Progress Fragment -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_progress"
+            android:name="com.ailyan.intrus.ui.views.fragments.ProgressFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="@dimen/_5sdp"
+            app:layout_constraintBottom_toTopOf="@id/layout_question_answers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="2.5" />
+
+        <LinearLayout
+            android:id="@+id/layout_question_answers"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/button_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_progress"
+            app:layout_constraintVertical_weight="6">
+
+            <!-- Question Fragment -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_question"
+                android:name="com.ailyan.intrus.ui.views.fragments.QuestionFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/_2sdp"
+                android:layout_weight="2" />
+
+            <!-- Answer Fragment -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_answer"
+                android:name="com.ailyan.intrus.ui.views.fragments.AnswerFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/_2sdp"
+                android:layout_weight="8" />
+
+        </LinearLayout>
+
+        <!-- Control -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_next"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_150sdp"
+            android:padding="@dimen/_4sdp"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:backgroundTint="@color/green"
+            android:text="@string/button_next"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_question_answers"
+            app:layout_constraintVertical_weight="1.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

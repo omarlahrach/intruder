@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Intrus" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
@@ -6,14 +6,14 @@
         <item name="colorPrimaryVariant">@color/light_colorPrimaryVariant</item>
         <item name="colorOnPrimary">@color/light_colorOnPrimary</item>
         <item name="android:colorBackground">@color/light_colorBackground</item>
+        <item name="colorSurface">@color/light_colorSurface</item>
+        <item name="colorOnSurface">@color/light_colorOnSecondary</item>
+        <item name="colorSurfaceVariant">@color/light_colorBackground</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/light_colorSecondary</item>
         <item name="colorSecondaryVariant">@color/light_colorSecondaryVariant</item>
         <item name="colorOnSecondary">@color/light_colorOnSecondary</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/light_colorBackground</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- Custom components -->
+        <item name="android:windowFullscreen">true</item>
     </style>
-
 </resources>

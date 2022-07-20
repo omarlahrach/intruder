@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ailyan.intrus.R;
 import com.ailyan.intrus.data.sources.local.entities.AnswerEntity;
+import com.ailyan.intrus.databinding.FragmentAnswerBinding;
 import com.ailyan.intrus.ui.viewModels.AnswerViewModel;
 import com.google.android.material.card.MaterialCardView;
 import com.squareup.picasso.Picasso;
@@ -28,12 +29,16 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
     private final AnswerViewModel answerViewModel;
     private final LayoutInflater mInflater;
     private AnswerAdapter.ItemClickListener mClickListener;
+    private final int rows;
+    private final FragmentAnswerBinding binding;
 
-    public AnswerAdapter(Context context, List<AnswerEntity> answers, AnswerViewModel answerViewModel) {
+    public AnswerAdapter(Context context, List<AnswerEntity> answers, AnswerViewModel answerViewModel, int rows, FragmentAnswerBinding binding) {
         this.mInflater = LayoutInflater.from(context);
         this.answers = answers;
         this.context = context;
         this.answerViewModel = answerViewModel;
+        this.rows = rows;
+        this.binding = binding;
     }
 
     @NonNull
@@ -42,7 +47,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
         View view = mInflater.inflate(R.layout.item_answer, parent, false);
         GridLayoutManager.LayoutParams lp = (GridLayoutManager.LayoutParams) view.getLayoutParams();
         ViewGroup.MarginLayoutParams lpv = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-        lp.height = parent.getMeasuredHeight() / 2 - lpv.topMargin * 2;
+        lp.height = parent.getMeasuredHeight() / rows - lpv.topMargin * 2;
         view.setLayoutParams(lp);
         return new ViewHolder(view);
     }
@@ -50,9 +55,10 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull AnswerAdapter.ViewHolder holder, int position) {
         AnswerEntity answer = answers.get(position);
-        //Bitmap bitmap = BitmapFactory.decodeByteArray(answer.image, 0, answer.image.length);
         if (answer.imageUrl != null)
             Picasso.get().load(answer.imageUrl).into(holder.imageView_answer);
+        binding.answers.setVisibility(View.VISIBLE);
+        binding.loading.setVisibility(View.INVISIBLE);
     }
 
     @Override
